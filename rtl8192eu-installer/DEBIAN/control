@@ -1,0 +1,10 @@
+Package: rtl8192eu-installer
+Version: 1.0.0-1big2
+Depends: dkms, git, build-essential
+Architecture: all
+Maintainer: Bruno Goncalves <www.biglinux.com.br>
+Section: admin
+Priority: optional
+Installed-Size:16
+Description:  Faz o download e instalação automaticamente do endereço: https://github.com/clnhub/rtl8192eu-linux / Automatically download and install from: https://github.com/clnhub/rtl8192eu-linux
+

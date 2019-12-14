@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#remove driver
+rmmod 8192eu 2> /dev/null
+rmmod rtl8xxxu 2> /dev/null
+dkms remove rtl8192eu/1.0 --all
+rm -Rf /usr/src/rtl8192eu-src
+rm -f /etc/modprobe.d/blacklist-rtl8xxxu.conf
+
+#reload udev
+udevadm control --reload-rules
+udevadm trigger

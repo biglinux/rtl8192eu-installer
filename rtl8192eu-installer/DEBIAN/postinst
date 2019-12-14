@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+package_name=rtl8192eu-installer
+
+
+case "$1" in
+  upgrade)
+   
+    #remove driver
+    cd /usr/src/rtl8192eu-src
+    cd rtl8192eu-linux
+    bash dkms-remove.sh
+    rm -Rf /usr/src/rtl8192eu-src
+
+    
+    #install driver
+    mkdir -p /usr/src/rtl8192eu-src
+    cd /usr/src/rtl8192eu-src
+    git clone https://github.com/clnhub/rtl8192eu-linux.git
+    cd rtl8192eu-linux
+    bash install_wifi.sh
+
+    #reload udev
+    udevadm control --reload-rules
+    udevadm trigger
+
+    exit 0
+    ;;
+    
+  *)
+    #install driver
+    mkdir -p /usr/src/rtl8192eu-src
+    cd /usr/src/rtl8192eu-src
+    git clone https://github.com/clnhub/rtl8192eu-linux.git
+    cd rtl8192eu-linux
+    bash install_wifi.sh
+
+    #reload udev
+    udevadm control --reload-rules
+    udevadm trigger
+  
+    ;;
+esac
+exit 0
